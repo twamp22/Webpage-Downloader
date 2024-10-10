@@ -10,7 +10,6 @@ class WebpageDownloader:
         self.filename = self.generate_filename()
 
     def generate_filename(self):
-        # Generate filename based on URL, replacing invalid characters
         return self.url.replace('http://', '').replace('https://', '').replace('.', '_').replace('/', '_').replace('\\', '_') + '.html'
 
     def download(self):
@@ -18,7 +17,6 @@ class WebpageDownloader:
             response = urllib.request.urlopen(self.url)
             web_content = response.read().decode('utf-8')
             
-            # Ensure the 'downloaded' directory exists
             os.makedirs('downloaded', exist_ok=True)
             full_path = os.path.join('downloaded', self.filename)
             
